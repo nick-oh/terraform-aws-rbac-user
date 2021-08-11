@@ -32,6 +32,7 @@ resource "aws_iam_user_group_membership" "groups" {
 resource "random_password" "password" {
   count            = local.login_on == true ? 1 : 0
   length           = lookup(var.password_policy, "length", 16)
+  number           = true
   special          = true
   override_special = "!@#$%^&*()_+-=[]{}|'"
 }
